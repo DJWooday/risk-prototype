@@ -19,15 +19,21 @@ public class GunFire : MonoBehaviour
     void Update()
     {
         if (Input.GetMouseButtonDown(0)) {
-            Debug.Log("Fire!");
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            Vector3 force;
+            if (Physics.Raycast(ray, out hit)) {
+                force = (hit.point - gunTip.position).normalized;
+            } else {
+                force = gunTip.forward;
+            }
+
             GameObject bullet = Instantiate(bulletPrefab);
             bullet.transform.position = gunTip.position;
             bullet.transform.rotation = gunTip.rotation;
 
-            Vector3 force = gunTip.forward * bulletForce;
-
             bullet.GetComponent<Rigidbody>().velocity = player.GetComponent<Rigidbody>().velocity;
-            bullet.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
+            bullet.GetComponent<Rigidbody>().AddForce(force * bulletForce, ForceMode.Impulse);
         }
     }
 }

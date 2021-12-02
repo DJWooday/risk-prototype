@@ -20,5 +20,7 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter(Collision collision) {
         if (collision.collider.tag == "Enemy")
             collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(bulletDamage);
+        if (collision.collider.tag == "Player")
+            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(bulletDamage);
     }
 }

@@ -56,7 +56,7 @@ public class AgentAI : MonoBehaviour
             { AgentState.SHOOT, ShootExecute }
         };
 
-        StateTransition(AgentState.WANDER);
+        StateTransition(AgentState.CHASE);
     }
 
     // Update is called once per frame
@@ -113,8 +113,8 @@ public class AgentAI : MonoBehaviour
     private void ChaseExecute() {
         ai.destination = player.position;
         transform.forward = ai.velocity.normalized;
-        if (Vector3.Distance(transform.position, player.position) < 10)
-            StateTransition(AgentState.SHOOT);
+        //if (Vector3.Distance(transform.position, player.position) < 10)
+        //    StateTransition(AgentState.SHOOT);
     }
 
     float shootAngle;

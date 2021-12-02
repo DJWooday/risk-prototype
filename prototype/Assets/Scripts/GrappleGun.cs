@@ -34,6 +34,7 @@ public class GrappleGun : MonoBehaviour
     }
 
     private void Grapple() {
+
         // Instantiate a grappling hook, send it out
         hook = Instantiate(grappleHookPre, gunTip.position, gunTip.rotation);
         hook.GetComponent<Rigidbody>().AddForce(gunTip.forward * shotForce, ForceMode.Impulse);
