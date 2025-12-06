@@ -32,7 +32,7 @@ public class GunFire : MonoBehaviour
             bullet.transform.position = gunTip.position;
             bullet.transform.rotation = gunTip.rotation;
 
-            bullet.GetComponent<Rigidbody>().velocity = player.GetComponent<Rigidbody>().velocity;
+            bullet.GetComponent<Rigidbody>().linearVelocity = player.GetComponent<Rigidbody>().linearVelocity;
             bullet.GetComponent<Rigidbody>().AddForce(force * bulletForce, ForceMode.Impulse);
         }
     }
